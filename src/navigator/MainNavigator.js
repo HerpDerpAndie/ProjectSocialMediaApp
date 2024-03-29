@@ -2,6 +2,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import LoginScreen from "../screens/LoginScreen";
 import { NavigationContainer } from "@react-navigation/native";
+import RegisterScreen from "../screens/RegisterScreen";
 
 const Stack = createStackNavigator();
 
@@ -14,6 +15,14 @@ const MainNavigator = () => {
                     component={LoginScreen}
                     options={{
                         headerShown: false
+                    }}
+                />
+                <Stack.Screen 
+                    name="Register"
+                    component={RegisterScreen}
+                    options={{
+                        headerTitleAlign: 'center',
+                        headerLeft: null
                     }}
                 />
             </Stack.Navigator>

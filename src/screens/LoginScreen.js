@@ -4,7 +4,10 @@ import React from 'react'
 import { Button } from '../components/ButtonComponent';
 import { Input } from '../components/InputComponent';
 
-const LoginScreen = () => {
+const LoginScreen = (props) => {
+
+    const { navigation } = props;
+
     return (
         <ScrollView contentContainerStyle={styles.scroll}>
             <View style={styles.mainContainer}>
@@ -29,7 +32,9 @@ const LoginScreen = () => {
                  <Text style={styles.text}>
                      Don't have an account?
                  </Text>
-                 <TouchableOpacity>
+                 <TouchableOpacity onPress={
+                    () => navigation.navigate('Register')
+                 }>
                      <Text style={styles.registerText}>
                          Register
                      </Text>
