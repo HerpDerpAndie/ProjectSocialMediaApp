@@ -1,12 +1,50 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native'
-import React from 'react'
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, Alert } from 'react-native'
+import React, { useEffect, useState } from 'react'
 
 import { Button } from '../components/ButtonComponent';
 import { Input } from '../components/InputComponent';
+import { useSelector } from 'react-redux';
 
 const LoginScreen = (props) => {
-
     const { navigation } = props;
+
+    const globalProfileData = useSelector(store => store.profileReducer)
+
+    const [isPassVisible, setIsPassVisible] = useState(false)
+
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+
+    const checkData = () => {
+        if (username === '' || password === '') {
+            alert('Please Fill all Fields')
+        } else if (username.toLowerCase() === globalProfileData.username.toLowerCase() &&
+            password === globalProfileData.password) {
+            alert('Welcome ' + username)
+        } else {
+            Alert.alert(
+                'Login Succesful',
+                'Welcome ' + globalProfileData.username,
+                [
+                    {
+                        text: 'OK',
+                        onPress: () => {
+                            navigation.navigate('Home')
+                        }
+                    }
+                ]
+            )
+        }
+
+        setUsername('')
+        setPassword('')
+    }
+
+    // get global variable username, password, email
+    useEffect(() => {
+        console.log('GLOBAL STATE ON LOGIN PAGE');
+        console.log(globalProfileData);
+    }, [globalProfileData]);
 
     return (
         <ScrollView contentContainerStyle={styles.scroll}>
@@ -15,34 +53,47 @@ const LoginScreen = (props) => {
                     <Image
                         style={styles.image}
                         source={
-                          require('../../assets/login.png')
+                            require('../../assets/login.png')
                         }
-                   />
-               </View>
-               <View style={styles.inputContainer}>
-                  <Input
-                      title="Username"
-                      placeholder="Username"
-                 />
-             </View>
-             <Button
-                 text='Login'
-             />
-             <View style={styles.textContainer}>
-                 <Text style={styles.text}>
-                     Don't have an account?
-                 </Text>
-                 <TouchableOpacity onPress={
-                    () => navigation.navigate('Register')
-                 }>
-                     <Text style={styles.registerText}>
-                         Register
-                     </Text>
-                 </TouchableOpacity>
-             </View>
-         </View>
-     </ScrollView>
-   )
+                    />
+                </View>
+                <View style={styles.inputContainer}>
+                    <Input
+                        title="Username"
+                        placeholder="Username"
+                        value={username}
+                        onChangeText={(text) => setUsername(text)}
+                    />
+                    <Input
+                        title="Password"
+                        placeholder="Password"
+                        isPassword={true}
+                        secureTextEntry={isPassVisible ? false : true}
+                        iconName={isPassVisible ? 'eye-off' : 'eye'}
+                        onPress={() => setIsPassVisible(!isPassVisible)}
+                        value={password}
+                        onChangeText={(text) => setPassword(text)}
+                    />
+                </View>
+                <Button
+                    text='Login'
+                    onPress = {() => checkData()}
+                />
+                <View style={styles.textContainer}>
+                    <Text style={styles.text}>
+                        Don't have an account?
+                    </Text>
+                    <TouchableOpacity onPress={
+                        () => navigation.navigate('Register')
+                    }>
+                        <Text style={styles.registerText}>
+                            Register
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        </ScrollView>
+    )
 };
 
 const styles = StyleSheet.create({
