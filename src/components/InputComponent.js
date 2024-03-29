@@ -10,17 +10,17 @@ export const Input = (props) => {
     const { title } = props;
     return (
         <View style={styles.mainContainer}>
-           <View style={styles.titleContainer}>
-               <Text>{title}</Text>
-           </View>
-           <View style={styles.inputContainer}>
-              <TextInput
-                 style={styles.input}
-                 {...props}
-             />
-         </View>
-     </View>
-   )
+            <View style={styles.titleContainer}>
+                <Text>{title}</Text>
+            </View>
+            <View style={styles.inputContainer}>
+                <TextInput
+                    style={styles.input}
+                    {...props}
+                />
+            </View>
+        </View>
+    )
 };
 
 const styles = StyleSheet.create({
