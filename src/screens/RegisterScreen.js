@@ -70,9 +70,9 @@ const RegisterScreen = (props) => {
     // set global variable 
     useEffect(() => {
         dispatch(createProfile({
-            username: 'newUsername',
+            username: 'username',
             email: 'newEmail',
-            password: 'newPassword'
+            password: 'pass'
         }))
     }, [])
 

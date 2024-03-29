@@ -4,3 +4,10 @@ export const createProfile = (value) => {
         payload: value
     }
 };
+
+export const login = (value) => {
+    return {
+        type: 'LOGIN',
+        payload: value
+    }
+}

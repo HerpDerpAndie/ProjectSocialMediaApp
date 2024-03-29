@@ -3,10 +3,13 @@ import React, { useEffect, useState } from 'react'
 
 import { Button } from '../components/ButtonComponent';
 import { Input } from '../components/InputComponent';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../store/actions/profileActions';
 
 const LoginScreen = (props) => {
     const { navigation } = props;
+
+    const dispatch = useDispatch()
 
     const globalProfileData = useSelector(store => store.profileReducer)
 
@@ -20,8 +23,6 @@ const LoginScreen = (props) => {
             alert('Please Fill all Fields')
         } else if (username.toLowerCase() === globalProfileData.username.toLowerCase() &&
             password === globalProfileData.password) {
-            alert('Welcome ' + username)
-        } else {
             Alert.alert(
                 'Login Succesful',
                 'Welcome ' + globalProfileData.username,
@@ -29,11 +30,14 @@ const LoginScreen = (props) => {
                     {
                         text: 'OK',
                         onPress: () => {
-                            navigation.navigate('Home')
+                            // navigation.navigate('Start') --> ganti global variable
+                            dispatch(login(true))
                         }
                     }
                 ]
             )
+        } else {
+            alert('Wrong username or password')
         }
 
         setUsername('')
