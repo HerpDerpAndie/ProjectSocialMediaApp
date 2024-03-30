@@ -107,6 +107,10 @@ const MainNavigator = () => {
                         headerLeft: null
                     }}
                 />
+                <Stack.Screen
+                    name="Profile"
+                    component={ProfileScreen}
+                />
                 {/* <Stack.Screen
                     name="Start"
                     component={Start}
