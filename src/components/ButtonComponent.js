@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     },
     text: {
         textTransform: 'uppercase',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: "black"
     }
 });

@@ -65,12 +65,14 @@ const LoginScreen = (props) => {
                     <Input
                         title="Username"
                         placeholder="Username"
+                        placeholderTextColor = "grey"
                         value={username}
                         onChangeText={(text) => setUsername(text)}
                     />
                     <Input
                         title="Password"
                         placeholder="Password"
+                        placeholderTextColor = "grey"
                         isPassword={true}
                         secureTextEntry={isPassVisible ? false : true}
                         iconName={isPassVisible ? 'eye-off' : 'eye'}
@@ -85,7 +87,7 @@ const LoginScreen = (props) => {
                 />
                 <View style={styles.textContainer}>
                     <Text style={styles.text}>
-                        Don't have an account?
+                        Don't have an account? 
                     </Text>
                     <TouchableOpacity onPress={
                         () => navigation.navigate('Register')
@@ -124,14 +126,17 @@ const styles = StyleSheet.create({
     },
     textContainer: {
         flexDirection: 'row',
-        marginTop: 16
+        marginTop: 16,
+        color: "black"
     },
     text: {
-        fontSize: 16
+        fontSize: 16,
+        color: "black"
     },
     registerText: {
         color: '#1A5B0A',
-        fontSize: 16
+        fontSize: 16,
+        marginLeft: 8
     }
 });
 

@@ -76,7 +76,8 @@ const Start = () => {
 }
 
 const MainNavigator = () => {
-    const isLogin = useSelector(store => store.profileReducer.isLogin)
+    // const isLogin = useSelector(store => store.profileReducer.isLogin)
+    const isLogin = true; // to make easier debugging -> change back after finished with this meeting
     return (
         <NavigationContainer>
         {

@@ -13,7 +13,9 @@ export const Input = (props) => {
     return (
         <View style={styles.mainContainer}>
             <View style={styles.titleContainer}>
-                <Text>{title}</Text>
+                <Text style = {{
+                    color: "black"
+                }}>{title}</Text>
             </View>
             <View style={styles.inputContainer}>
                 <TextInput
@@ -44,12 +46,13 @@ const styles = StyleSheet.create({
         marginBottom: 8,
     },
     titleContainer: {
-        marginLeft: 16
+        marginLeft: 16,
+        color: "black"
     },
     input: {
         padding: 8,
         flex: 1,
-        color: 'black'
+        color: "black"
     },
     inputContainer: {
         borderWidth: 1,
@@ -57,7 +60,8 @@ const styles = StyleSheet.create({
         margin: 8,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
+        color: "black"
     },
     iconContainer: {
         padding: 8
